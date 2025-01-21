@@ -1,1 +1,1 @@
-exports_files(["defs.bzl","process_json.py"])
+exports_files(["data.json","process_json.py"])
