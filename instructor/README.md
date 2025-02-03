@@ -41,7 +41,7 @@ Commit solución -> `git cherry-pick 0f499de6a67a98f0375abeb98268774bed7dc74c`
 > 
 > **Ahora**, construimos este target con:
 > ```bash
-> bazel build //simple_genrule:print_data
+> bazel build //exercise_1/solution:print_data
 > ```
 > Revisa la consola: debería mostrar el contenido de `data.json`. Además, en `bazel-bin/simple_genrule/print_data.log` verás el mismo contenido almacenado como archivo de salida.”
 
@@ -53,21 +53,23 @@ Commit solución -> `git cherry-pick 0f499de6a67a98f0375abeb98268774bed7dc74c`
 > Después, en `simple_genrule/BUILD`, agregamos:
 > ```python
 > genrule(
->     name = "convert_data",
->     srcs = [
->         "//:data.json",
->         "//:process_json.py",
->     ],
->     outs = ["output.csv"],
->     cmd = "python process_json.py $(SRCS) > $@",
-> )
+>    name = "convert_data_2",
+>    srcs = [
+>        "//resources:data.json",
+>    ],
+>    tools = ["//resources:process_json.py"],
+>    outs = ["output.csv"],
+>    cmd = "python3 resources/process_json.py $(SRCS) $(OUTS)",
+>)
 > ```
 > 
 > Al ejecutar:
 > ```bash
-> bazel build //simple_genrule:convert_data
+> bazel build //exercise_2/solution::convert_data
 > ```
-> se generará el archivo `output.csv` en `bazel-bin/simple_genrule/`. Con esto ya tenemos un ejemplo de cómo usar `genrule` para un script de transformación.”
+> se generará el archivo `output.csv` en `bazel-bin/exercise_2/simple_genrule/`. Con esto ya tenemos un ejemplo de cómo usar `genrule` para un script de transformación.”
+
+Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 
 ### 5. Recapitulación y Preguntas (0:45 - 0:50)
 
