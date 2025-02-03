@@ -1,3 +1,6 @@
 # Bazel out files
 bazel-*
 bazel-*/**
+
+#intelj
+.ijwb/

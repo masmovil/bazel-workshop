@@ -1,23 +1,12 @@
-# General Overview of the Workshop
-## Bazel Workshop: Creating and Using Custom Rules
+## Exercise 1: Process the JSON File
 
-Estimated Duration: **~2 hours**
+**Objective:** Apply a simple script in Python to read the JSON and convert it to another format (e.g., CSV).
 
-### Main Objectives: ###
+**Steps:**
 
-1. Understand the structure of a `Bazel` project (WORKSPACE, BUILD, etc.).
-2. Get familiar with the syntax and usage of simple rules, starting with **genrule**.
-3. Learn how to write custom rules in `Starlark`.
-4. Understand how to create macros that chain multiple rules.
-5. Use a single JSON file in all exercises to demonstrate how `Bazel` handles input/output data.
+1. Create a `BUILD` file under `exercise_2/team_name_solution/.`
+2. In the `BUILD` file, define a `genrule` (convert_data) that:
+    * Declares the `resources\process_json.py` script as a `tool (tools)`.
+    * Calls `resources\process_json.py` in the cmd and write the result to an output `output.csv.`
 
-### Target Audience: ### 
-
-* Software engineers with a low/intermediate level of experience in Bazel.
-* Comfortable using the command line, Git, and a text/code editor.
-
-### Format: ### 
-
-* Each block includes a short theoretical explanation followed by practical exercises.
-* Exercises build upon one another, gradually increasing in complexity.
-* A Q&A session concludes the workshop.
+**Estimated Duration:** ~15 minutes (explanation + practice).
