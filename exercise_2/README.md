@@ -1,4 +1,4 @@
-## Exercise 1: Process the JSON File
+## Exercise 2: Process the JSON File
 
 **Objective:** Apply a simple script in Python to read the JSON and convert it to another format (e.g., CSV).
 

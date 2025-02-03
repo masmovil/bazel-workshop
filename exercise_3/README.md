@@ -1,23 +1,20 @@
-# General Overview of the Workshop
-## Bazel Workshop: Creating and Using Custom Rules
+## Exercise 3: Creating a Custom Rule
 
-Estimated Duration: **~2 hours**
+**Objective:** Understand the difference between a native rule (like genrule) and a custom rule written in Starlark.
 
-### Main Objectives: ###
+**Steps:**
 
-1. Understand the structure of a `Bazel` project (WORKSPACE, BUILD, etc.).
-2. Get familiar with the syntax and usage of simple rules, starting with **genrule**.
-3. Learn how to write custom rules in `Starlark`.
-4. Understand how to create macros that chain multiple rules.
-5. Use a single JSON file in all exercises to demonstrate how `Bazel` handles input/output data.
+1. Create a `exercise_3\rules.bzl` file to define a simple rule, for example `my_json_rule`.
+2. Inside `my_json_rule`, specify:
+    * Attributes: `name`, `src` (for the JSON), possibly `output`.
+    * The main action: copying or transforming content (similar to `genrule`), but now using Starlark 
+    (`ctx.actions.run` or `ctx.actions.write`).
+3. In the `exercise_3\BUILD` file, load the rule (`load("//:rules.bzl", "my_json_rule"`) and create a target that uses `my_json_rule`.
+4. Modify `my_json_rule` when `script` is a custom rules public `attr`
 
-### Target Audience: ### 
+5. Run `bazel build //exercise_3:my_json_rule_target`.
 
-* Software engineers with a low/intermediate level of experience in Bazel.
-* Comfortable using the command line, Git, and a text/code editor.
 
-### Format: ### 
+*Custom Rule Doc:* https://bazel.build/extending/rules#implementation_function
 
-* Each block includes a short theoretical explanation followed by practical exercises.
-* Exercises build upon one another, gradually increasing in complexity.
-* A Q&A session concludes the workshop.
+**Estimated Duration:**  ~20 minutes (explanation + practice).
