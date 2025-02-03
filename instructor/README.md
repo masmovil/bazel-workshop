@@ -74,16 +74,16 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 ### 5. Recapitulación y Preguntas (0:45 - 0:50)
 
 > **Instructor**:  
-> “¿Tienen alguna pregunta sobre `genrule`, cómo declaramos `srcs`, `outs` o cómo funciona el campo `cmd`?  
+> “¿Tienen alguna pregunta sobre `genrule`, cómo declaramos `srcs`, `outs`, `tools` o cómo funciona el campo `cmd`?  
 > 
 > Hasta ahora, hemos visto dos ejemplos prácticos: uno para imprimir contenido y otro para procesarlo con un script externo. Esto sienta la base para crear reglas más avanzadas.”
 
 *(Espacio para preguntas y aclaraciones.)*
 
-### 6. Ejercicio 3: Creación de una Regla Personalizada en Starlark (0:50 - 1:10)
+### 6. Ejercicio 3: Creación de una Custom Rule en Starlark (0:50 - 1:10)
 
 > **Instructor**:  
-> “Ahora pasaremos a **escribir una regla personalizada** usando Starlark, lo que nos da más control y escalabilidad en comparación con `genrule`.  
+> “Ahora pasaremos a **escribir una Custom Rule** usando Starlark, lo que nos da más control y escalabilidad en comparación con `genrule`.  
 > 
 > 1. Creamos un archivo `rules.bzl` en la raíz del proyecto con la siguiente implementación:
 > ```python
