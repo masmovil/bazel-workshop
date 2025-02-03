@@ -31,9 +31,13 @@
 >     srcs = ["//resources:data.json"],  # Hace referencia al archivo en la raíz del proyecto
 >     outs = ["print_data.log"],  # Archivo de salida para que Bazel no se queje de salidas inexistentes
 >     cmd = "cat $(SRCS) | tee $@",
+>     #cmd = "cat $(SRCS) > $(OUTS)",
 > )
 > ```
-> Esta regla ejecuta el comando de shell `cat` para mostrar el contenido de `data.json` y utiliza `tee` para redirigir ese contenido al archivo `print_data.log`.  
+> Esta regla ejecuta el comando de shell `cat` para mostrar el contenido de `data.json` y utiliza `tee` para redirigir ese contenido al archivo `print_data.log`. 
+
+Commit solución -> `git cherry-pick 0f499de6a67a98f0375abeb98268774bed7dc74c`
+
 > 
 > **Ahora**, construimos este target con:
 > ```bash
