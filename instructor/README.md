@@ -95,7 +95,7 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 > 
 >     # Ejecutamos el script para transformar JSON a CSV
 >     ctx.actions.run(
->         inputs = [input_file, ctx.file._script],
+>         inputs = [input_file],
 >         outputs = [output_file],
 >         arguments = [input_file.path, output_file.path],
 >         executable = ctx.executable._script,
@@ -109,7 +109,7 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 >         "src": attr.label(allow_single_file = True),
 >         "_script": attr.label(
 >             allow_single_file = True,
->             default = "//:process_json.py",
+>             default = "//resources:process_json.py",
 >             executable = True,
 >             cfg = "host",
 >         ),
@@ -119,11 +119,11 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 > 
 > 2. En el archivo `BUILD` principal, cargamos la regla y la usamos:
 > ```python
-> load("//:rules.bzl", "my_json_rule")
+> load("//exercise_3:rules.bzl", "my_json_rule")
 > 
 > my_json_rule(
 >     name = "my_json_to_csv",
->     src = "data.json",
+>     src = "//resources:data.json",
 > )
 > ```
 > 
