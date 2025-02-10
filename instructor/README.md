@@ -135,6 +135,8 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 > 
 > Con esto, hemos visto cómo crear una regla que describe sus propios *inputs*, *outputs* y lógica de build. El script `process_json.py` realiza la transformación, mientras que la regla gestiona la acción dentro del grafo de dependencias de Bazel.”
 
+Commit solución -> `git cherry-pick 7c0c6196dd38979efab1dc3cd34336384c49ae4c`
+
 ### 7. Ejercicio 4: Macro que Combina Varias Reglas (1:10 - 1:30)
 
 > **Instructor**:  
@@ -173,6 +175,56 @@ Commit solución -> `git cherry-pick e1dee194d1e6848d39bdd1c7bab136c1b010fcfb`
 > bazel build //:pipeline
 > ```
 > lograremos obtener tanto el CSV (generado por la primera regla) como el archivo comprimido (salida del segundo paso). La macro nos permite orquestar varios targets en una sola invocación.”
+
+> punto 4:
+
+> En `rules_zip.bzl`, añadimos:
+> ```python
+> def _my_zip_rule_impl(ctx):
+>    # Get Input file (JSON)
+>    input_file = ctx.file.src
+>
+>    # Declare ouput file (ZIP)
+>    output_file = ctx.actions.declare_file(ctx.label.name + ".zip")
+>
+>    # Execute the command
+>    ctx.actions.run_shell(
+>        inputs = [input_file],
+>        outputs = [output_file],      
+>        arguments = [input_file.path, output_file.path],  
+>        command = "zip $2 $1",
+>    )>
+>
+>    return [DefaultInfo(files = depset([output_file]))]
+>
+> my_zip_rule = rule(
+>    implementation = _my_zip_rule_impl,
+>    attrs = {
+>        "src": attr.label(allow_single_file = True)       
+>    },
+> )
+
+> ```
+> 
+> Después, en nuestro `BUILD`:
+> ```python
+> load("//:rules.bzl", "my_pipeline", "my_pipeline_zip")
+> 
+> 
+> my_pipeline_zip(
+>    name = "pipeline_zip",
+>    src = "//resources:data.json",
+> )
+> ```
+> 
+> Con un solo comando:
+> ```bash
+> bazel build //:pipeline_zip
+> ```
+> lograremos obtener tanto el CSV (generado por la primera regla) como el archivo comprimido (salida del segundo paso). La macro nos permite orquestar varios targets en una sola invocación.”
+
+
+Commit solución -> `git cherry-pick bcbb3f6849ad8ddcc77bb17ce84eda764a062d20`
 
 ### 8. Conclusiones (1:30 - 1:40)
 
