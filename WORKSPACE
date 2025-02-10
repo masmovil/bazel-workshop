@@ -1,2 +1,2 @@
 # WORKSPACE
-workspace(name = "my_bazel_workshop")
+workspace(name = "bazel_workshop")
