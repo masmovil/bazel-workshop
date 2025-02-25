@@ -12,3 +12,5 @@
     * run_shell: https://bazel.build/rules/lib/builtins/actions#run_shell
 
 **Estimated Duration:**  ~20 minutes (explanation + practice).
+
+**Solution:** `git cherry-pick bcbb3f6849ad8ddcc77bb17ce84eda764a062d20`

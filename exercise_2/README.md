@@ -10,3 +10,5 @@
     * Calls `resources\process_json.py` in the cmd and write the result to an output `output.csv.`
 
 **Estimated Duration:** ~15 minutes (explanation + practice).
+
+**Solution:** `git cherry-pick 3e5a873619292d6f661eaa6d06d032d7ffa2eb79`

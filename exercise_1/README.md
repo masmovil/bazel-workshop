@@ -10,3 +10,5 @@
 4. Run bazel `build //exercise_1/team_name_solution:print_data` and verify the output in the console and the generated log.
 
 **Estimated Duration:** ~15 minutes (explanation + practice).
+
+**Solution:** `git cherry-pick 5069f0667b26f9fa1be3a80fe0a743ab95ebcfcc`    

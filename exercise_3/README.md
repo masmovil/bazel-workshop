@@ -18,3 +18,5 @@
 *Custom Rule Doc:* https://bazel.build/extending/rules#implementation_function
 
 **Estimated Duration:**  ~20 minutes (explanation + practice).
+
+**Solution:** `git cherry-pick 7c0c6196dd38979efab1dc3cd34336384c49ae4c`
